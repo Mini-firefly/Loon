@@ -4,9 +4,17 @@
 
 [Script]
 
+# > 什么值得买 - user-api.smzdm.com
+# 打开：什么值得买_APP 点击签到 获取cookie
+http-request ^https?:\/\/user-api\.smzdm\.com\/checkin$ script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_daily.js, timeout=10, tag=什么值得买_获取Cookie
+
 # > 喜马拉雅 - *.ximalaya.com
 # 打开：喜马拉雅APP 获取cookie
 http-request ^https?:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/app-skin-service\/skin\/ script-path=https://raw.githubusercontent.com/ClydeTime/Surge/main/Script/Task/xmly.js, requires-body=0, tag=喜马拉雅_Cookie 
+
+# > 捷停车签到 - sytgate.jslife.com.cn
+# 打开：捷停车APP 获取userId
+http-request ^https:\/\/sytgate\.jslife\.com\.cn\/core-gateway\/order\/carno\/pay\/info script-path=https://raw.githubusercontent.com/FoKit/Scripts/main/scripts/jparking_sign.js, requires-body=true, timeout=10, enabled=false, tag=获取捷停车userId
 
 
 # > 美团买菜币 - mall.meituan.com
@@ -24,4 +32,4 @@ http-response ^https:\/\/api\.tuhu\.cn\/User\/GetInternalCenterInfo script-path=
 http-response ^https:\/\/sunquan\.api\.ddxq\.mobi\/api\/v2\/user\/signin script-path=https://raw.githubusercontent.com/tutuh/script/master/task/ddmc.js, requires-body=1, tag=叮咚买菜_Cookie 
 
 [MITM]
-hostname = *.ximalaya.com, mall.meituan.com, api.tuhu.cn, sunquan.api.ddxq.mobi
+hostname = user-api.smzdm.com, *.ximalaya.com, sytgate.jslife.com.cn, mall.meituan.com, api.tuhu.cn, sunquan.api.ddxq.mobi
